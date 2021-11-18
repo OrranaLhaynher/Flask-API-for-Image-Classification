@@ -120,7 +120,7 @@ class Classify_Image(Resource):
 
         with open("temp.jpg", "wb") as f:
             f.write(r.content)
-            proc = subprocess.Popen('python classiy_image.py --model_dir=. --image_file=temp.jpg', shell=True)
+            proc = subprocess.Popen('python ./web/classiy_image.py --model_dir=. --image_file=temp.jpg', shell=True)
             proc.communicate()[0]
             proc.wait()
             with open("text.txt") as g:
