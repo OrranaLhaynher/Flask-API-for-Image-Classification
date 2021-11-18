@@ -153,12 +153,12 @@ def run_inference_on_image(image):
     node_lookup = NodeLookup()
 
     top_k = predictions.argsort()[-FLAGS.num_top_predictions:][::-1]
-    result_json = {}
+    result_json = dict()
 
     for node_id in top_k:
       human_string = node_lookup.id_to_string(node_id)
       score = predictions[node_id]
-      result_json[human_string] = score
+      result_json[human_string] = str(score)
       print('%s (score = %.5f)' % (human_string, score))
     
     with open("text.txt") as f:
